@@ -1,5 +1,4 @@
-
-import { useMediaQuery } from 'react-responsive';
+import {useMediaQuery} from 'react-responsive';
 import React from 'react';
 import Signup from './signup';
 import Login from './login';
@@ -8,48 +7,49 @@ import NicknameChange from './NicknameChange';
 import PasswordChange from './PasswordChange';
 import Withdrawal from './Withdrawal';
 import Mypage from './mypage';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 function App() {
-  const isMobile = useMediaQuery({
-    query: "(max-width:768px)",
-  });
-  console.log('isMobile:', isMobile);
-  return (
-    <BrowserRouter>
-      <Routes>
-        <>
-          {isMobile && <Route path='/' element={<Signup/>} />}
-          {isMobile && <Route path='/signup' element={<Signup/>} />}
-          {isMobile && <Route path='/login' element={<Login/>} />}
-          {isMobile && <Route path='/inform' element={<Inform/>} />}
-          {isMobile && <Route path='/NicknameChange' element={<NicknameChange/>} />}
-          {isMobile && <Route path='/PasswordChange' element={<PasswordChange/>} />}
-          {isMobile && <Route path='/Withdrawal' element={<Withdrawal/>} />}
-          {isMobile && <Route path='/mypage' element={<Mypage/>} />}
-        </>
-      </Routes>
-      <PC>pc화면입니다.</PC>
-    </BrowserRouter>
-   
-  );
+    // 임시로 화면 크기 감지 꺼둠
+    // const isMobile = useMediaQuery({
+    //   query: "(max-width:768px)",
+    // });
+    const isMobile = 1;
+    console.log('isMobile:', isMobile);
+    return (
+        <BrowserRouter>
+            <Routes>
+                <>
+                    {isMobile && <Route path='/' element={<Signup/>}/>}
+                    {isMobile && <Route path='/signup' element={<Signup/>}/>}
+                    {isMobile && <Route path='/login' element={<Login/>}/>}
+                    {isMobile && <Route path='/inform' element={<Inform/>}/>}
+                    {isMobile && <Route path='/NicknameChange' element={<NicknameChange/>}/>}
+                    {isMobile && <Route path='/PasswordChange' element={<PasswordChange/>}/>}
+                    {isMobile && <Route path='/Withdrawal' element={<Withdrawal/>}/>}
+                    {isMobile && <Route path='/mypage' element={<Mypage/>}/>}
+                </>
+            </Routes>
+            {/*<PC>pc화면입니다.</PC>*/}
+        </BrowserRouter>
+
+    );
 }
 
-const Mobile = ({ children }) => {
-  const isMobile = useMediaQuery({
-    query: "(max-width:768px)",
-  });
+const Mobile = ({children}) => {
+    const isMobile = useMediaQuery({
+        query: "(max-width:768px)",
+    });
 
-  return <>{isMobile && children}</>;
+    return <>{isMobile && children}</>;
 };
 
-const PC = ({ children }) => {
-  const isPc = useMediaQuery({
-    query: "(min-width:769px)",
-  });
+const PC = ({children}) => {
+    const isPc = useMediaQuery({
+        query: "(min-width:769px)",
+    });
 
-  return <>{isPc && children}</>;
+    return <>{isPc && children}</>;
 };
 
 export default App;
-

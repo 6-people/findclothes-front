@@ -1,100 +1,54 @@
-.input_signup {
-margin-left: 50px;
-margin-top: 50px;
-}
-.input_signup input {
-    width: 500px;
+/* 중복 확인 */
+.duplicateWrapper {
+    position: relative;
     height: 50px;
-    margin-bottom: 30px;
-    margin-left: 15px;
-    font-size: 20px;
-    border-radius: 20px;
-  }
-.input_signup button{
-    width: 510px;
-    height: 50px;
-    font-size: 20px;
-    margin-left: 15px;
-    border-radius: 20px;
-    border-color: white;
+    margin-bottom: 20px;
 }
-.input_signup_name{
-  font-size: 30px;
-    margin-left: 50px;
-    margin-top: 40px;
+
+.duplicateWrapper .duplicateInput {
+    width: 415px;
+    padding-right: 80px;
+    height: inherit;
 }
-.back-icon{
-  margin-right: 20px;
-  width: 20px;
-   height: 20px;
+
+.duplicateWrapper .duplicateButton {
+    height: inherit;
+    line-height: 50px;
+    position: absolute;
+    top: 0;
+    right: 15px;
+    color: #808080;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
 }
-.duplicate-id{
-  color: red;
-  margin-top: -70px;
-  margin-left: 460px;
-  position: absolute;
+
+.duplicateWrapper .duplicateButton:hover {
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
 }
-.available-id{
-  color:blue;
-  margin-top: -70px;
-  margin-left: 460px;
-  position: absolute;
+
+/* 중복 확인 end */
+
+.afterCheck {
+    height: inherit;
+    line-height: 50px;
+    position: absolute;
+    top: 0;
+    right: 15px;
+    font-size: 15px;
+    pointer-events: none;
 }
-.password-match{
-  color: red;
-  margin-top: -70px;
-  margin-left: 460px;
-  position: absolute;
+
+.duplicate-id,
+.password-match,
+.duplicate-nickname,
+.duplicate-email {
+    color: red;
 }
-.available-password{
-  color:blue;
-  margin-top: -70px;
-  margin-left: 460px;
-  position: absolute;
-}
-.duplicate-nickname{
-  color: red;
-  margin-top: -70px;
-  margin-left: 460px;
-  position: absolute;
-}
-.available-nickname{
-  color:blue;
-  margin-top: -70px;
-  margin-left: 460px;
-  position: absolute;
-}
-.duplicate-email{
-  color: red;
-  margin-top: -70px;
-  margin-left: 460px;
-  position: absolute;
-}
-.available-email{
-  color:blue;
-  margin-top: -70px;
-  margin-left: 460px;
-  position: absolute;
-}
-.move{
-  display: flex;
-  justify-content: space-around;
-  margin-top: 70px;
-  margin-left: 10px;
-  border-radius: 50px;
-  border-color: gray;
-  background-color: #FFFFFF;
-  height: 60px;
-  overflow: hidden;
-  width: 600px;
-  align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-.product-icon,
-.digging-icon,
-.home-icon,
-.community-icon,
-.mypage-icon {
-  width: 30px; 
-  height: 30px; 
+
+.available-id,
+.available-password,
+.available-nickname,
+.available-email {
+    color: blue;
 }

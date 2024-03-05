@@ -1,30 +1,28 @@
-.mypage_name{
-    font-size: 30px;
-    margin-left: 50px;
-    margin-top: 40px;
-}
-.mypage_move{
-      display: flex;
-      justify-content: space-around;
-      margin-top: 500px;
-      margin-left: 10px;
-      border-radius: 50px;
-      border-color: gray;
-      background-color: #FFFFFF;
-      height: 60px;
-      overflow: hidden;
-      width: 600px;
-      align-items: center;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-.loginOut::before {
-    content: '|'; 
-    margin-right: 10px; 
+.mypageCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
 }
 
-.inform_select{
-    margin-left: 300px;
-    margin-top: -50px;
+.inform_select {
     display: flex;
+    margin-right: 15px;
     font-weight: bold;
+}
+
+.inform {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.logout::before {
+    content: '|';
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.inform:hover,
+.logout:hover {
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
 }
