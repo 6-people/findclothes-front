@@ -1,0 +1,50 @@
+.withdrawal_name{
+  font-size: 30px;
+  margin-left: 50px;
+  margin-top: 40px;
+}
+.withdrawal_name p{
+    font-size: 30px;
+    margin-left: 160px;
+    margin-top: -40px;
+    font-weight: bold;
+}
+.withdrawal_move{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 280px;
+  margin-left: 10px;
+  border-radius: 50px;
+  border-color: gray;
+  background-color: #FFFFFF;
+  height: 60px;
+  overflow: hidden;
+  width: 600px;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.user-info-box {
+    background-color: #f0f0f0; 
+    padding: 9px;
+    margin-top: 30px;
+    margin-left: 50px;
+    margin-bottom: 20px; 
+    width: 500px;
+    border-radius: 30px;
+  }
+  .confirm_password{
+    margin-left: 50px;
+    height: 50px;
+    width: 510px;
+    border-radius: 20px;
+    margin-top: 30px;
+    font-size: 20px;
+  }
+  .withdrawal_button{
+    margin-left: 50px;
+    height: 50px;
+    width: 510px;
+    border-radius: 20px;
+    margin-top: 30px;
+    font-size: 20px;
+  }
