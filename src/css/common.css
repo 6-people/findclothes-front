@@ -1,0 +1,151 @@
+/* text 드래그 방지 */
+.undraggable {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* bg : 하단바(.move)의 공간은 비우고 padding */
+.backgroundWithMoveBar {
+    padding: 30px 30px 60px 30px;
+}
+
+/* 상단바 서비스 div box */
+.serviceNameBox {
+    width: 510px;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+/* 상단바 페이지명 div box (페이지명 중앙) */
+.pageNameBox {
+    width: 510px;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pageNameBox .imgBlank {
+    width: 20px;
+}
+
+/* 상단바 페이지명 div box end */
+
+/* 서비스 상단바 div box의 뒤로가기 아이콘 */
+.back-icon {
+    margin-right: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+/* 가로 중앙 정렬 wrapper */
+.centerXWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+/* 하단바 start */
+.move {
+    width: 500px;
+    height: 60px;
+    padding: 5px 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    bottom: 30px;
+    border-radius: 50px;
+    border: none;
+    background-color: #FFFFFF;
+    box-shadow: 0px 14px 56px rgba(0, 0, 0, 0.15);
+}
+
+.move:hover {
+    box-shadow: 0px 14px 56px rgba(0, 0, 0, 0.3);
+}
+
+move img {
+    cursor: pointer;
+}
+
+.move img:hover {
+    filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.3));
+}
+
+.product-icon,
+.digging-icon,
+.home-icon,
+.community-icon,
+.mypage-icon {
+    width: 25px;
+    height: 25px;
+}
+
+/* 하단바 end */
+
+/*
+.userInfoInput
+로그인, 회원가입, 회원 정보 수정의 general하게 사용
+input, button을 감싼 div
+*/
+.userInfoInput input {
+    width: 493px;
+    height: 50px;
+    margin-bottom: 20px;
+    padding-left: 15px;
+    border-radius: 20px;
+    border: none;
+    outline: 2px solid #F1F1F1;
+    font-size: 20px;
+}
+
+.userInfoInput input:hover {
+    outline: 2px solid #DBDBDB;
+}
+
+.userInfoInput input::placeholder {
+    font-weight: bold;
+    color: #808080;
+}
+
+.userInfoInput button {
+    width: 510px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #808080;
+    border-radius: 20px;
+    border: none;
+}
+
+.userInfoInput button:active,
+.userInfoInput button:hover,
+.userInfoInput button:focus {
+    background: #DBDBDB;
+}
+
+/* .userInfoInput end */
+
+/* .userInfoCard */
+.userInfoCard {
+    background-color: #f0f0f0;
+    padding: 9px;
+    margin-bottom: 40px;
+    width: 500px;
+    border-radius: 30px;
+}
+
+.userInfoCard p {
+    margin-left: 15px;
+}
+
+.userInfoCardNickname {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+/* .userInfoCard end */
