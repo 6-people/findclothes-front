@@ -1,0 +1,15 @@
+.change button {
+    width: 510px;
+    height: 50px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 20px;
+    background-color: #ffffff;
+    border: 2px solid #F1F1F1;
+    color: #808080;
+}
+
+.change button:hover {
+    background-color: #F1F1F1;
+}

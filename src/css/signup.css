@@ -1,0 +1,54 @@
+/* 중복 확인 */
+.duplicateWrapper {
+    position: relative;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.duplicateWrapper .duplicateInput {
+    width: 415px;
+    padding-right: 80px;
+    height: inherit;
+}
+
+.duplicateWrapper .duplicateButton {
+    height: inherit;
+    line-height: 50px;
+    position: absolute;
+    top: 0;
+    right: 15px;
+    color: #808080;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.duplicateWrapper .duplicateButton:hover {
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* 중복 확인 end */
+
+.afterCheck {
+    height: inherit;
+    line-height: 50px;
+    position: absolute;
+    top: 0;
+    right: 15px;
+    font-size: 15px;
+    pointer-events: none;
+}
+
+.duplicate-id,
+.password-match,
+.duplicate-nickname,
+.duplicate-email {
+    color: red;
+}
+
+.available-id,
+.available-password,
+.available-nickname,
+.available-email {
+    color: blue;
+}

@@ -1,0 +1,28 @@
+.mypageCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.inform_select {
+    display: flex;
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+.inform {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.logout::before {
+    content: '|';
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.inform:hover,
+.logout:hover {
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+}
