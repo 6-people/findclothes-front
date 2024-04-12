@@ -17,15 +17,18 @@ const PasswordChange = ({onPasswordChange}) => {
     const [name, setName] = useState('이름1');
     const [id, setId] = useState('아이디1');
     const [passwordMismatch, setPasswordMismatch] = useState(false);
+    const [passwordMatch, setPasswordMatch] = useState(false); 
 
     const handlePasswordChange = () => {
 
         if (newPassword !== confirmPassword) {
             setPasswordMismatch(true);
+            setPasswordMatch(false); 
             return;
         }
 
         setPasswordMismatch(false);
+        setPasswordMatch(true); 
 
         onPasswordChange(newPassword);
 
@@ -81,7 +84,7 @@ const PasswordChange = ({onPasswordChange}) => {
                                     onChange={(e) => setConfirmPassword(e.target.value)}
                                 />
                             </label>
-                            {passwordMismatch && <div className="password-mismatch">!</div>}
+                            {passwordMismatch && <div className="password-mismatch">NO</div>} 
                         </div>
                         <button onClick={handlePasswordChange}>변경하기</button>
                     </div>
@@ -90,7 +93,9 @@ const PasswordChange = ({onPasswordChange}) => {
             <div className='centerXWrapper'>
                 <div className='move'>
                     <img src={product} alt="product" className="product-icon"/>
-                    <img src={digging} alt="digging" className="digging-icon"/>
+                    <Link to="/digging">
+                    <img src={digging} alt="digging" className="digging-icon" />
+                    </Link>
                     <img src={home} alt="home" className="home-icon"/>
                     <img src={community} alt="community" className="community-icon"/>
                     <Link to="/mypage">
@@ -100,8 +105,8 @@ const PasswordChange = ({onPasswordChange}) => {
             </div>
         </div>
     );
-};
+}; 
+
 
 export default PasswordChange;
 
-// TODO : password mismatch 확인 안 됨

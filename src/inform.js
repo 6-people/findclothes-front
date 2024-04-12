@@ -24,7 +24,7 @@ const Inform = () => {
                     <Link to="/login">
                         <img src={backIcon} alt="Back Icon" className="back-icon"/>
                     </Link>
-                    서비스명
+                    clothely
                 </div>
             </div>
             <div className='centerXWrapper'>

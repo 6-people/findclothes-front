@@ -43,7 +43,7 @@ const Login = ({setIsLogIn}) => {
             <div className='centerXWrapper'>
                 <div className='serviceNameBox'>
                     <img src={backIcon} alt="Back Icon" className="back-icon"/>
-                    서비스명
+                    clothely
                 </div>
             </div>
             <div className='centerXWrapper'>
@@ -113,7 +113,9 @@ const Login = ({setIsLogIn}) => {
             <div className='centerXWrapper'>
                 <div className='move'>
                     <img src={product} alt="product" className="product-icon"/>
-                    <img src={digging} alt="digging" className="digging-icon"/>
+                    <Link to="/digging">
+                    <img src={digging} alt="digging" className="digging-icon" />
+                    </Link>
                     <img src={home} alt="home" className="home-icon"/>
                     <img src={community} alt="community" className="community-icon"/>
                     <Link to="/mypage">

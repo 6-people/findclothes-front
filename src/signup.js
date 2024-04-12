@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-=======
-import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
->>>>>>> 7833f41aaa87d86056b2db23b44b309751b2978d
 import backIcon from './icons/back.png';
 import mypage from './icons/user.png';
 import community from './icons/community.png';
@@ -27,57 +22,17 @@ const Signup = () => {
     const [isNicknameDuplicate, setIsNicknameDuplicate] = useState(false);
     const [isEmailDuplicate, setIsEmailDuplicate] = useState(false);
     const [isPasswordMatch, setIsPasswordMatch] = useState(true);
-<<<<<<< HEAD
     const [idCheckDone, setIdCheckDone] = useState(false);
     const [nicknameCheckDone, setNicknameCheckDone] = useState(false);
     const [emailCheckDone, setEmailCheckDone] = useState(false);
 
-    function handleChange(e) {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
-
-        if (name === 'password' || name === 'confirmPassword') {
-            setIsPasswordMatch(true);
-        } else if (name === 'id') {
-            setIsIdDuplicate(false);
-            setIdCheckDone(false);
-        } else if (name === 'nickname') {
-            setIsNicknameDuplicate(false);
-            setNicknameCheckDone(false);
-        } else if (name === 'email') {
-            setIsEmailDuplicate(false);
-            setEmailCheckDone(false);
-        }
-    }
+   
 
     const handleDuplicateCheck = (type) => {
-=======
-
-    function handleChange(e) {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        });
-
-        setIsIdDuplicate(false);
-        setIsNicknameDuplicate(false);
-        setIsEmailDuplicate(false);
-
-        if (e.target.name === 'password' || e.target.name === 'confirmPassword') {
-            setIsPasswordMatch(true);
-        }
-    }
-
-    const handleDuplicateCheck = () => {
->>>>>>> 7833f41aaa87d86056b2db23b44b309751b2978d
         const existingIds = ['Id1', 'Id2', 'Id3'];
         const existingNicknames = ['Nickname1', 'Nickname2', 'Nickname3'];
         const existingEmails = ['Email1@example.com', 'Email2@example.com', 'Email3@example.com'];
 
-<<<<<<< HEAD
         if (type === 'id') {
             const isDuplicate = existingIds.includes(formData.id);
             // 아이디 중복 여부를 나타내는 상태에 저장
@@ -93,15 +48,16 @@ const Signup = () => {
             setIsEmailDuplicate(isDuplicate);
             setEmailCheckDone(true);
         }
-=======
-        setIsIdDuplicate(existingIds.includes(formData.id));
-        setIsNicknameDuplicate(existingNicknames.includes(formData.nickname));
-        setIsEmailDuplicate(existingEmails.includes(formData.email));
->>>>>>> 7833f41aaa87d86056b2db23b44b309751b2978d
     };
 
     const handlePasswordMatch = () => {
-        setIsPasswordMatch(formData.password === formData.confirmPassword);
+        if (formData.confirmPassword === '') {
+            setIsPasswordMatch(true); 
+        } else if (formData.password === formData.confirmPassword) {
+            setIsPasswordMatch(true);
+        } else {
+            setIsPasswordMatch(false);
+        }
     };
 
     const handleSubmit = (e) => {
@@ -113,6 +69,27 @@ const Signup = () => {
         console.log('회원 가입 정보:', formData);
     };
 
+    function handleChange(e) {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+
+        if (name === 'password' || name === 'confirmPassword') {
+            setIsPasswordMatch();
+        } else if (name === 'id') {
+            setIsIdDuplicate(false);
+            setIdCheckDone(false);
+        } else if (name === 'nickname') {
+            setIsNicknameDuplicate(false);
+            setNicknameCheckDone(false);
+        } else if (name === 'email') {
+            setIsEmailDuplicate(false);
+            setEmailCheckDone(false);
+        }
+    }
+    
     return (
         <div className='backgroundWithMoveBar undraggable'>
             <div className='centerXWrapper'>
@@ -120,7 +97,7 @@ const Signup = () => {
                     <Link to="/login">
                         <img src={backIcon} alt="Back Icon" className="back-icon"/>
                     </Link>
-                    서비스명
+                    clothely
                 </div>
             </div>
             <div className='centerXWrapper'>
@@ -133,7 +110,6 @@ const Signup = () => {
                                 name="id"
                                 value={formData.id}
                                 onChange={handleChange}
-<<<<<<< HEAD
                                 placeholder='아이디'
                             />
                             {!idCheckDone && (
@@ -142,24 +118,11 @@ const Signup = () => {
                                 </div>
                             )}
                             {idCheckDone && isIdDuplicate && (
-=======
-                                onBlur={handleDuplicateCheck}
-                                placeholder='아이디'
-                            />
-                            <div className='duplicateButton'>
-                                중복 확인
-                            </div>
-                            {isIdDuplicate && (
->>>>>>> 7833f41aaa87d86056b2db23b44b309751b2978d
                                 <div className='duplicate-id afterCheck'>
                                     NO
                                 </div>
                             )}
-<<<<<<< HEAD
                             {idCheckDone && !isIdDuplicate && (
-=======
-                            {!isIdDuplicate && formData.id && (
->>>>>>> 7833f41aaa87d86056b2db23b44b309751b2978d
                                 <div className='available-id afterCheck'>
                                     OK
                                 </div>
@@ -201,7 +164,6 @@ const Signup = () => {
                                 name="nickname"
                                 value={formData.nickname}
                                 onChange={handleChange}
-<<<<<<< HEAD
                                 placeholder='닉네임'
                             />
                             {!nicknameCheckDone && (
@@ -210,24 +172,11 @@ const Signup = () => {
                                 </div>
                             )}
                             {nicknameCheckDone && isNicknameDuplicate && (
-=======
-                                onBlur={handleDuplicateCheck}
-                                placeholder='닉네임'
-                            />
-                            <div className='duplicateButton'>
-                                중복 확인
-                            </div>
-                            {isNicknameDuplicate && (
->>>>>>> 7833f41aaa87d86056b2db23b44b309751b2978d
                                 <div className='duplicate-nickname afterCheck'>
                                     NO
                                 </div>
                             )}
-<<<<<<< HEAD
                             {nicknameCheckDone && !isNicknameDuplicate && (
-=======
-                            {!isNicknameDuplicate && formData.nickname && (
->>>>>>> 7833f41aaa87d86056b2db23b44b309751b2978d
                                 <div className='available-nickname afterCheck'>
                                     OK
                                 </div>
@@ -240,7 +189,6 @@ const Signup = () => {
                                 name="email"
                                 value={formData.email}
                                 onChange={handleChange}
-<<<<<<< HEAD
                                 placeholder='이메일'
                             />
                             {!emailCheckDone && (
@@ -249,24 +197,11 @@ const Signup = () => {
                                 </div>
                             )}
                             {emailCheckDone && isEmailDuplicate && (
-=======
-                                onBlur={handleDuplicateCheck}
-                                placeholder='이메일'
-                            />
-                            <div className='duplicateButton'>
-                                중복 확인
-                            </div>
-                            {isEmailDuplicate && (
->>>>>>> 7833f41aaa87d86056b2db23b44b309751b2978d
                                 <div className='duplicate-email afterCheck'>
                                     NO
                                 </div>
                             )}
-<<<<<<< HEAD
                             {emailCheckDone && !isEmailDuplicate && (
-=======
-                            {!isEmailDuplicate && formData.email && (
->>>>>>> 7833f41aaa87d86056b2db23b44b309751b2978d
                                 <div className='available-email afterCheck'>
                                     OK
                                 </div>
@@ -279,7 +214,9 @@ const Signup = () => {
             <div className='centerXWrapper'>
                 <div className='move'>
                     <img src={product} alt="product" className="product-icon"/>
-                    <img src={digging} alt="digging" className="digging-icon"/>
+                    <Link to="/digging">
+                    <img src={digging} alt="digging" className="digging-icon" />
+                    </Link>
                     <img src={home} alt="home" className="home-icon"/>
                     <img src={community} alt="community" className="community-icon"/>
                     <Link to="/mypage">
@@ -293,8 +230,3 @@ const Signup = () => {
 };
 
 export default Signup;
-
-<<<<<<< HEAD
-=======
-// TODO : 중복 확인 후 OK, NO 나오도록 하기
->>>>>>> 7833f41aaa87d86056b2db23b44b309751b2978d

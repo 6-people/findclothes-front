@@ -7,6 +7,7 @@ import NicknameChange from './NicknameChange';
 import PasswordChange from './PasswordChange';
 import Withdrawal from './Withdrawal';
 import Mypage from './mypage';
+import Digging from './digging';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Routes>
                 <>
                     {isMobile && <Route path='/' element={<Signup/>}/>}
+                    {isMobile && <Route path='/digging' element={<Digging/>}/>}
                     {isMobile && <Route path='/signup' element={<Signup/>}/>}
                     {isMobile && <Route path='/login' element={<Login/>}/>}
                     {isMobile && <Route path='/inform' element={<Inform/>}/>}
@@ -53,3 +55,4 @@ const PC = ({children}) => {
 };
 
 export default App;
+
