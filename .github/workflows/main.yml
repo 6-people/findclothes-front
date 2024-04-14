@@ -50,4 +50,4 @@ jobs:
         --application-name findclothes_deploy
         --deployment-config-name CodeDeployDefault.AllAtOnce
         --deployment-group-name findclothes-deploy-group
-        --s3-location bucket=findclothes-front-s3,bundleType=gz,key=archive/drcloud.tar.gz
+        --s3-location bucket=findclothes-front-s3,bundleType=tgz,key=archive/drcloud.tar.gz
