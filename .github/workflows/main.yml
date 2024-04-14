@@ -43,11 +43,11 @@ jobs:
         aws-region: ap-northeast-2
         
     - name: upload to S3
-      run: aws s3 cp --region  ap-southeast-2 ./drcloud.tar.gz s3://findclothes-front-s3/archive/drcloud.tar.gz
+      run: aws s3 cp --region  ap-southeast-2 ./drcloud.tar.gz s3://findclothes-front-s3/drcloud.tar.gz
       
     - name: deploy with AWS codeDeploy
       run: aws deploy create-deployment
         --application-name findclothes_deploy
         --deployment-config-name CodeDeployDefault.AllAtOnce
         --deployment-group-name findclothes-deploy-group
-        --s3-location bucket=findclothes-front-s3,bundleType=tgz,key=archive/drcloud.tar.gz
+        --s3-location bucket=findclothes-front-s3,bundleType=tgz,key=drcloud.tar.gz
