@@ -31,13 +31,15 @@ jobs:
     #     cp -r $GITHUB_WORKSPACE . 
       
     - name: archive drcloud 
-      run: tar cvfz ./drcloud.tar.gz *
+      run: |
+        tar cvfz ./drcloud.tar.gz *
+        echo $pwd
        
     - name: AWS configure credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        aws-access-key-id: ${{ FINDCLOTHES_FRONT_ACCESS }}
-        aws-secret-access-key: ${{ FINDCLOTHES_FRONT_SECRET }}
+        aws-access-key-id: ${{ secrets.FINDCLOTHES_FRONT_ACCESS }}
+        aws-secret-access-key: ${{ secrets.FINDCLOTHES_FRONT_SECRET }}
         aws-region: ap-northeast-2
         
     - name: upload to S3
