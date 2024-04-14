@@ -47,7 +47,7 @@ jobs:
       
     - name: deploy with AWS codeDeploy
       run: aws deploy create-deployment
-        --application-name githubaction-test
-        --deployment-config-name CodeDeployDefault.OneAtATime
-        --deployment-group-name githubaction-test-group
+        --application-name findclothes_deploy
+        --deployment-config-name CodeDeployDefault.AllAtOnce
+        --deployment-group-name findclothes-deploy-group
         --s3-location bucket=github-action-codedeploy-s3,bundleType=tgz,key=archive/drcloud.tar.gz
