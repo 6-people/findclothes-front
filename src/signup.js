@@ -1,11 +1,6 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import backIcon from './icons/back.png';
-import mypage from './icons/user.png';
-import community from './icons/community.png';
-import digging from './icons/digging.png';
-import home from './icons/home.png';
-import product from './icons/product.png';
+import React, {useState} from 'react';
+import MoveBar from './component/MoveBar';
+import ServiceNameBox from './component/ServiceNameBox';
 import './css/signup.css';
 import './css/common.css';
 
@@ -25,8 +20,6 @@ const Signup = () => {
     const [idCheckDone, setIdCheckDone] = useState(false);
     const [nicknameCheckDone, setNicknameCheckDone] = useState(false);
     const [emailCheckDone, setEmailCheckDone] = useState(false);
-
-   
 
     const handleDuplicateCheck = (type) => {
         const existingIds = ['Id1', 'Id2', 'Id3'];
@@ -52,7 +45,7 @@ const Signup = () => {
 
     const handlePasswordMatch = () => {
         if (formData.confirmPassword === '') {
-            setIsPasswordMatch(true); 
+            setIsPasswordMatch(true);
         } else if (formData.password === formData.confirmPassword) {
             setIsPasswordMatch(true);
         } else {
@@ -70,7 +63,7 @@ const Signup = () => {
     };
 
     function handleChange(e) {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
         setFormData({
             ...formData,
             [name]: value,
@@ -89,17 +82,10 @@ const Signup = () => {
             setEmailCheckDone(false);
         }
     }
-    
+
     return (
         <div className='backgroundWithMoveBar undraggable'>
-            <div className='centerXWrapper'>
-                <div className='serviceNameBox'>
-                    <Link to="/login">
-                        <img src={backIcon} alt="Back Icon" className="back-icon"/>
-                    </Link>
-                    clothely
-                </div>
-            </div>
+            <ServiceNameBox to="/login"></ServiceNameBox>
             <div className='centerXWrapper'>
                 <div>
                     <form onSubmit={handleSubmit} className='userInfoInput'>
@@ -211,21 +197,8 @@ const Signup = () => {
                     </form>
                 </div>
             </div>
-            <div className='centerXWrapper'>
-                <div className='move'>
-                    <img src={product} alt="product" className="product-icon"/>
-                    <Link to="/digging">
-                    <img src={digging} alt="digging" className="digging-icon" />
-                    </Link>
-                    <img src={home} alt="home" className="home-icon"/>
-                    <img src={community} alt="community" className="community-icon"/>
-                    <Link to="/mypage">
-                        <img src={mypage} alt="mypage" className="mypage-icon"/>
-                    </Link>
-                </div>
-            </div>
+            <MoveBar></MoveBar>
         </div>
-
     );
 };
 

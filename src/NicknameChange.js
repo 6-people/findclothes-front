@@ -1,16 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import backIcon from './icons/back.png';
-import mypage from './icons/user.png';
-import community from './icons/community.png';
-import digging from './icons/digging.png';
-import home from './icons/home.png';
-import product from './icons/product.png';
+import React, {useState} from 'react';
+import PageNameBox from "./component/PageNameBox";
+import MoveBar from "./component/MoveBar";
 import './css/common.css';
 
 const NicknameChange = () => {
-    const [currentNickname, setCurrentNickname] = useState('닉네임1'); 
-    const [newNickname, setNewNickname] = useState(''); 
+    const [currentNickname, setCurrentNickname] = useState('닉네임1');
+    const [newNickname, setNewNickname] = useState('');
     const [name, setName] = useState('이름1');
     const [id, setId] = useState('아이디1');
 
@@ -21,15 +16,7 @@ const NicknameChange = () => {
 
     return (
         <div className='backgroundWithMoveBar undraggable'>
-            <div className='centerXWrapper'>
-                <div className='pageNameBox'>
-                    <Link to="/inform">
-                        <img src={backIcon} alt="Back Icon" className="back-icon" />
-                    </Link>
-                    닉네임 변경
-                    <div className='imgBlank'></div>
-                </div>
-            </div>
+            <PageNameBox to="/inform" text="닉네임 변경"></PageNameBox>
             <div className='centerXWrapper'>
                 <div>
                     <div className='userInfoCard'>
@@ -51,21 +38,7 @@ const NicknameChange = () => {
                     </div>
                 </div>
             </div>
-            <div className='centerXWrapper'>
-                <div className='move'>
-                    <Link>
-                    <img src={product} alt="product" className="product-icon" />
-                    </Link>
-                    <Link to="/digging">
-                    <img src={digging} alt="digging" className="digging-icon" />
-                    </Link>
-                    <img src={home} alt="home" className="home-icon" />
-                    <img src={community} alt="community" className="community-icon" />
-                    <Link to="/mypage">
-                        <img src={mypage} alt="mypage" className="mypage-icon" />
-                    </Link>
-                </div>
-            </div>
+            <MoveBar></MoveBar>
         </div>
     );
 };

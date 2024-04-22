@@ -1,11 +1,7 @@
 import React, {useState} from 'react'
 import {Link} from "react-router-dom";
-import backIcon from './icons/back.png';
-import mypage from './icons/user.png';
-import community from './icons/community.png';
-import digging from './icons/digging.png';
-import home from './icons/home.png';
-import product from './icons/product.png';
+import ServiceNameBox from "./component/ServiceNameBox";
+import MoveBar from "./component/MoveBar";
 import './css/mypage.css';
 import './css/common.css';
 
@@ -16,14 +12,7 @@ const Mypage = () => {
 
     return (
         <div className='backgroundWithMoveBar undraggable'>
-            <div className='centerXWrapper'>
-                <div className='serviceNameBox'>
-                    <Link to="/login">
-                        <img src={backIcon} alt="Back Icon" className="back-icon"/>
-                    </Link>
-                    clothely
-                </div>
-            </div>
+            <ServiceNameBox to="/login"></ServiceNameBox>
             <div className='centerXWrapper'>
                 <div className='userInfoCard mypageCard'>
                     <div>
@@ -38,19 +27,7 @@ const Mypage = () => {
                     </div>
                 </div>
             </div>
-            <div className='centerXWrapper'>
-                <div className='move'>
-                    <img src={product} alt="product" className="product-icon"/>
-                    <Link to="/digging">
-                    <img src={digging} alt="digging" className="digging-icon" />
-                    </Link>
-                    <img src={home} alt="home" className="home-icon"/>
-                    <img src={community} alt="community" className="community-icon"/>
-                    <Link to="/mypage">
-                        <img src={mypage} alt="mypage" className="mypage-icon"/>
-                    </Link>
-                </div>
-            </div>
+            <MoveBar></MoveBar>
         </div>
     );
 

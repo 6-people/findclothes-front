@@ -1,14 +1,10 @@
 import React, {useCallback, useState} from 'react'
-import {Link, useNavigate} from "react-router-dom";
-import backIcon from './icons/back.png';
-import mypage from './icons/user.png';
-import community from './icons/community.png';
-import digging from './icons/digging.png';
-import home from './icons/home.png';
-import product from './icons/product.png';
+import {useNavigate} from "react-router-dom";
 import kakao from './icons/kakao.png';
 import google from './icons/google.png';
 import naver from './icons/naver.png';
+import ServiceNameBox from "./component/ServiceNameBox";
+import MoveBar from "./component/MoveBar";
 import './css/login.css';
 import './css/common.css';
 
@@ -40,12 +36,7 @@ const Login = ({setIsLogIn}) => {
 
     return (
         <div className='backgroundWithMoveBar undraggable'>
-            <div className='centerXWrapper'>
-                <div className='serviceNameBox'>
-                    <img src={backIcon} alt="Back Icon" className="back-icon"/>
-                    clothely
-                </div>
-            </div>
+            <ServiceNameBox to="/login"></ServiceNameBox>
             <div className='centerXWrapper'>
                 <div>
                     <form onSubmit={onSubmitForm} className='userInfoInput'>
@@ -110,19 +101,7 @@ const Login = ({setIsLogIn}) => {
                     </form>
                 </div>
             </div>
-            <div className='centerXWrapper'>
-                <div className='move'>
-                    <img src={product} alt="product" className="product-icon"/>
-                    <Link to="/digging">
-                    <img src={digging} alt="digging" className="digging-icon" />
-                    </Link>
-                    <img src={home} alt="home" className="home-icon"/>
-                    <img src={community} alt="community" className="community-icon"/>
-                    <Link to="/mypage">
-                        <img src={mypage} alt="mypage" className="mypage-icon"/>
-                    </Link>
-                </div>
-            </div>
+            <MoveBar></MoveBar>
         </div>
     );
 };

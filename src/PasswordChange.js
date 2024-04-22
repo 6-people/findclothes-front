@@ -1,12 +1,7 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
-import backIcon from './icons/back.png';
-import mypage from './icons/user.png';
-import community from './icons/community.png';
-import digging from './icons/digging.png';
-import home from './icons/home.png';
-import product from './icons/product.png';
-import './css/PasswordChange.css';
+import PageNameBox from "./component/PageNameBox";
+import MoveBar from "./component/MoveBar";
+import './css/passwordChange.css';
 import './css/common.css';
 
 const PasswordChange = ({onPasswordChange}) => {
@@ -38,15 +33,7 @@ const PasswordChange = ({onPasswordChange}) => {
 
     return (
         <div className='backgroundWithMoveBar undraggable'>
-            <div className='centerXWrapper'>
-                <div className='pageNameBox'>
-                    <Link to="/inform">
-                        <img src={backIcon} alt="Back Icon" className="back-icon"/>
-                    </Link>
-                    비밀번호 변경
-                    <div className='imgBlank'></div>
-                </div>
-            </div>
+            <PageNameBox to="/inform" text="비밀번호 변경"></PageNameBox>
             <div className='centerXWrapper'>
                 <div>
                     <div className='userInfoCard'>
@@ -90,19 +77,7 @@ const PasswordChange = ({onPasswordChange}) => {
                     </div>
                 </div>
             </div>
-            <div className='centerXWrapper'>
-                <div className='move'>
-                    <img src={product} alt="product" className="product-icon"/>
-                    <Link to="/digging">
-                    <img src={digging} alt="digging" className="digging-icon" />
-                    </Link>
-                    <img src={home} alt="home" className="home-icon"/>
-                    <img src={community} alt="community" className="community-icon"/>
-                    <Link to="/mypage">
-                        <img src={mypage} alt="mypage" className="mypage-icon"/>
-                    </Link>
-                </div>
-            </div>
+            <MoveBar></MoveBar>
         </div>
     );
 }; 
