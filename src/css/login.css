@@ -1,73 +1,157 @@
-.loginUtils {
-    width: 500px;
-    height: 20px;
-    margin-top: 20px;
-    font-size: 20px;
-    font-weight: bold;
-    color: #808080;
-    display: flex;
-    justify-content: space-between;
+@media screen and (min-width: 551px) {
+    .loginUtils {
+        width: 500px;
+        height: 20px;
+        margin-top: 20px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #808080;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .autoLogin input[type="checkbox"] {
+        width: 15px;
+        height: 15px;
+        margin-top: 5px;
+        margin-right: 10px;
+        appearance: none;
+        outline: 2px solid #DBDBDB;
+    }
+
+    .or {
+        margin-left: 10px;
+        margin-right: 10px;
+        font-weight: normal;
+    }
+
+    .socialLogin {
+        margin-top: 40px;
+    }
+
+    .socialLogin button {
+        width: 510px;
+        height: 50px;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .kakao-icon {
+        height: 35px;
+        margin-right: 5px;
+        margin-bottom: 2px;
+    }
+
+    .naver-icon {
+        height: 35px;
+        margin-right: 5px;
+        margin-bottom: 2px;
+    }
+
+    .google-icon {
+        height: 20px;
+        margin-right: 10px;
+        margin-bottom: 1px;
+    }
+
+    .google {
+        background-color: #FFFFFF;
+        border: 2px solid black;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .loginUtils {
+        width: 400px;
+        height: 15px;
+        margin-top: 10px;
+        font-size: 15px;
+        font-weight: bold;
+        color: #808080;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .autoLogin input[type="checkbox"] {
+        width: 10px;
+        height: 10px;
+        margin-top: 5px;
+        margin-right: 8px;
+        appearance: none;
+        outline: 2px solid #DBDBDB;
+    }
+
+    .or {
+        margin-left: 8px;
+        margin-right: 8px;
+        font-weight: normal;
+    }
+
+    .socialLogin {
+        margin-top: 30px;
+    }
+
+    .socialLogin button {
+        width: 410px;
+        height: 40px;
+        font-size: 15px;
+        font-weight: bold;
+        border-radius: 17px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .kakao-icon {
+        height: 27px;
+        margin-right: 3px;
+        margin-bottom: 2px;
+    }
+
+    .naver-icon {
+        height: 27px;
+        margin-right: 3px;
+        margin-bottom: 2px;
+    }
+
+    .google-icon {
+        height: 16px;
+        margin-right: 8px;
+        margin-bottom: 1px;
+    }
+
+    .google {
+        background-color: #FFFFFF;
+        border: 1.5px solid black;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .loginUtils {
+        width: 300px;
+    }
+
+    .socialLogin button {
+        width: 310px;
+    }
 }
 
 .autoLogin {
     display: flex;
 }
 
-.autoLogin input[type="checkbox"] {
-    width: 15px;
-    height: 15px;
-    margin-top: 5px;
-    margin-right: 10px;
-    appearance: none;
-    outline: 2px solid #DBDBDB;
-}
-
 .autoLogin input[type="checkbox"]:checked {
     background-color: #DBDBDB;
 }
 
-.or {
-    margin-left: 10px;
-    margin-right: 10px;
-    font-weight: normal;
-}
-
-.socialLogin {
-    margin-top: 40px;
-}
-
-.socialLogin button {
-    width: 510px;
-    height: 50px;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 20px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .socialLogin button:hover {
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
-}
-
-.kakao-icon {
-    height: 35px;
-    margin-right: 5px;
-    margin-bottom: 2px;
-}
-
-.naver-icon {
-    height: 35px;
-    margin-right: 5px;
-    margin-bottom: 2px;
-}
-
-.google-icon {
-    height: 20px;
-    margin-right: 10px;
-    margin-bottom: 1px;
 }
 
 .kakao {
@@ -79,11 +163,6 @@
     color: #FFFFFF;
     background-color: #03C73C;
     border: none;
-}
-
-.google {
-    background-color: #FFFFFF;
-    border: 2px solid black;
 }
 
 .email {

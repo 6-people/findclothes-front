@@ -1,42 +1,86 @@
-/* 중복 확인 */
-.duplicateWrapper {
-    position: relative;
-    height: 50px;
-    margin-bottom: 20px;
+@media screen and (min-width: 551px) {
+    /* 중복 확인 */
+    .duplicateWrapper {
+        position: relative;
+        height: 50px;
+        margin-bottom: 20px;
+    }
+
+    .duplicateWrapper .duplicateInput {
+        width: 415px;
+        padding-right: 80px;
+        height: inherit;
+    }
+
+    .duplicateWrapper .duplicateButton {
+        height: inherit;
+        line-height: 50px;
+        position: absolute;
+        top: 0;
+        right: 15px;
+        color: #808080;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .afterCheck {
+        height: inherit;
+        line-height: 50px;
+        position: absolute;
+        top: 0;
+        right: 15px;
+        font-size: 15px;
+        font-weight: bold;
+        pointer-events: none;
+    }
 }
 
-.duplicateWrapper .duplicateInput {
-    width: 415px;
-    padding-right: 80px;
-    height: inherit;
+@media screen and (max-width: 550px) {
+    /* 중복 확인 */
+    .duplicateWrapper {
+        position: relative;
+        height: 40px;
+        margin-bottom: 10px;
+    }
+
+    .duplicateWrapper .duplicateInput {
+        width: 325px;
+        padding-right: 70px;
+        height: inherit;
+    }
+
+    .duplicateWrapper .duplicateButton {
+        height: inherit;
+        line-height: 40px;
+        position: absolute;
+        top: 0;
+        right: 15px;
+        color: #808080;
+        font-size: 12px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .afterCheck {
+        height: inherit;
+        line-height: 40px;
+        position: absolute;
+        top: 0;
+        right: 15px;
+        font-size: 12px;
+        pointer-events: none;
+    }
 }
 
-.duplicateWrapper .duplicateButton {
-    height: inherit;
-    line-height: 50px;
-    position: absolute;
-    top: 0;
-    right: 15px;
-    color: #808080;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
+@media screen and (max-width: 450px) {
+    .duplicateWrapper .duplicateInput {
+        width: 225px;
+    }
 }
 
 .duplicateWrapper .duplicateButton:hover {
     text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
-}
-
-/* 중복 확인 end */
-
-.afterCheck {
-    height: inherit;
-    line-height: 50px;
-    position: absolute;
-    top: 0;
-    right: 15px;
-    font-size: 15px;
-    pointer-events: none;
 }
 
 .duplicate-id,
