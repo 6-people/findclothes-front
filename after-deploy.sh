@@ -1,6 +1,8 @@
+#!/bin/bash
+
 REPOSITORY=/home/ubuntu/findclothes_deploy
 
-if [ -d $REPOSITORY/app ]; then
-    rm -rf $REPOSITORY/app
+if [ -d "$REPOSITORY/app" ]; then
+    rm -rf "$REPOSITORY/app"
 fi
-mkdir -vp $REPOSITORY/app
+mkdir -vp "$REPOSITORY/app"
