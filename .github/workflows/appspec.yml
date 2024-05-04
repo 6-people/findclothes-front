@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /findclothes_front
+    destination: /home/ubuntu/findclothes_deploy
 hooks:
   BeforeInstall:
     - location: scripts/install_dependencies.sh
