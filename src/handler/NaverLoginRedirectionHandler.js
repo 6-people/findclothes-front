@@ -25,7 +25,6 @@ const RedirectHandler = () => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
                 if (data.access_token) {
                     sendNaverToken(data.access_token);
                 }
@@ -42,7 +41,6 @@ const RedirectHandler = () => {
             }
         }).then(response => response.text())
             .then(jwt => {
-                console.log(jwt);
                 setData(jwt);
             })
             .catch(error => console.error('Error fetching Naver token:', error));

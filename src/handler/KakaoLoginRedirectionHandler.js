@@ -41,7 +41,6 @@ const RedirectHandler = () => {
             }
         }).then(response => response.text())
             .then(jwt => {
-                console.log(jwt);
                 setData(jwt);
             })
             .catch(error => console.error('Error fetching Kakao token:', error));
