@@ -9,6 +9,9 @@ import Withdrawal from './Withdrawal';
 import Mypage from './mypage';
 import Digging from './digging';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import KakaoLoginRedirectionHandler from "./handler/KakaoLoginRedirectionHandler";
+import NaverLoginRedirectionHandler from "./handler/NaverLoginRedirectionHandler";
+import GoogleLoginRedirectionHandler from "./handler/GoogleLoginRedirectionHandler";
 
 function App() {
     // 임시로 화면 크기 감지 꺼둠
@@ -30,6 +33,9 @@ function App() {
                     {isMobile && <Route path='/PasswordChange' element={<PasswordChange/>}/>}
                     {isMobile && <Route path='/Withdrawal' element={<Withdrawal/>}/>}
                     {isMobile && <Route path='/mypage' element={<Mypage/>}/>}
+                    {<Route path='/auth/login/social/kakao' element={<KakaoLoginRedirectionHandler/>}/>}
+                    {<Route path='/auth/login/social/naver' element={<NaverLoginRedirectionHandler/>}/>}
+                    {<Route path='/auth/login/social/google' element={<GoogleLoginRedirectionHandler/>}/>}
                 </>
             </Routes>
             {/*<PC>pc화면입니다.</PC>*/}

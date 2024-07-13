@@ -34,6 +34,25 @@ const Login = ({setIsLogIn}) => {
         setAutoLogin(!autoLogin);
     }, [autoLogin]);
 
+    const loginWithKakao = () => {
+        const KAKAO_KEY = process.env.REACT_APP_KAKAO_KEY;
+        const KAKAO_REDIRECT_URI = process.env.REACT_APP_KAKAO_REDIRECT_URL;
+        window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_KEY}&redirect_uri=${KAKAO_REDIRECT_URI}&response_type=code`;
+    };
+
+    const loginWithNaver = () => {
+        const NAVER_KEY = process.env.REACT_APP_NAVER_KEY;
+        const NAVER_REDIRECT_URI = process.env.REACT_APP_NAVER_REDIRECT_URL;
+        const NAVER_STATE = process.env.REACT_APP_NAVER_STATE;
+        window.location.href = `https://nid.naver.com/oauth2.0/authorize?client_id=${NAVER_KEY}&redirect_uri=${NAVER_REDIRECT_URI}&state=${NAVER_STATE}&response_type=code`;
+    };
+
+    const loginWithGoogle = () => {
+        const GOOGLE_KEY = process.env.REACT_APP_GOOGLE_KEY;
+        const GOOGLE_REDIRECT_URI = process.env.REACT_APP_GOOGLE_REDIRECT_URL;
+        window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${GOOGLE_KEY}&redirect_uri=${GOOGLE_REDIRECT_URI}&response_type=code`;
+    }
+
     return (
         <div className='backgroundWithMoveBar undraggable'>
             <ServiceNameBox to="/login"></ServiceNameBox>
@@ -83,15 +102,15 @@ const Login = ({setIsLogIn}) => {
                         </div>
                     </div>
                     <form className='socialLogin'>
-                        <button type="submit" className='kakao'>
+                        <button type="button" className='kakao' onClick={loginWithKakao}>
                             <img src={kakao} alt="kakao" className="kakao-icon"/>
                             카카오 로그인
                         </button>
-                        <button type="submit" className='naver'>
+                        <button type="button" className='naver' onClick={loginWithNaver}>
                             <img src={naver} alt="naver" className="naver-icon"/>
                             네이버 로그인
                         </button>
-                        <button type="submit" className='google'>
+                        <button type="button" className='google' onClick={loginWithGoogle}>
                             <img src={google} alt="google" className="google-icon"/>
                             구글 로그인
                         </button>
