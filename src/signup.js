@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import backIcon from './icons/back.png';
 import mypage from './icons/user.png';
 import community from './icons/community.png';
@@ -9,24 +10,82 @@ import product from './icons/product.png';
 import './css/signup.css';
 import './css/common.css';
 
+// 기본 axios 인스턴스 생성
+const axiosInstance = axios.create({
+    baseURL: 'http://localhost:8080'
+});
+
 const Signup = () => {
     const [formData, setFormData] = useState({
         id: '',
         password: '',
         confirmPassword: '',
-        name: '',
         nickname: '',
         email: '',
     });
     const [isIdDuplicate, setIsIdDuplicate] = useState(false);
-    const [isNicknameDuplicate, setIsNicknameDuplicate] = useState(false);
     const [isEmailDuplicate, setIsEmailDuplicate] = useState(false);
+    const [isNicknameDuplicate, setIsNicknameDuplicate] = useState(false);
     const [isPasswordMatch, setIsPasswordMatch] = useState(true);
     const [idCheckDone, setIdCheckDone] = useState(false);
-    const [nicknameCheckDone, setNicknameCheckDone] = useState(false);
     const [emailCheckDone, setEmailCheckDone] = useState(false);
+    const [nicknameCheckDone, setNicknameCheckDone] = useState(false);
+    const navigate = useNavigate();
 
-    function handleChange(e) {
+    const handleDuplicateCheck = async (type) => {
+        try {
+            let response;
+            if (type === 'id') {
+                response = await axiosInstance.get('/register/isDuplicatedId', {
+                    params: { id: formData.id }
+                });
+                setIsIdDuplicate(response.data.isDuplicate);
+                setIdCheckDone(true);
+            } else if (type === 'email') {
+                response = await axiosInstance.get('/register/isDuplicatedEmail', {
+                    params: { email: formData.email }
+                });
+                setIsEmailDuplicate(response.data.isDuplicate);
+                setEmailCheckDone(true);
+            } else if (type === 'nickname') {
+                response = await axiosInstance.get('/register/isDuplicatedNickname', {
+                    params: { nickname: formData.nickname }
+                });
+                setIsNicknameDuplicate(response.data.isDuplicate);
+                setNicknameCheckDone(true);
+            }
+        } catch (error) {
+            console.error('중복 확인 실패:', error);
+        }
+    };
+
+    const handlePasswordMatch = () => {
+        if (formData.confirmPassword === '') {
+            setIsPasswordMatch(true);
+        } else if (formData.password === formData.confirmPassword) {
+            setIsPasswordMatch(true);
+        } else {
+            setIsPasswordMatch(false);
+        }
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axiosInstance.post('/register', formData);
+            console.log('회원 가입 성공:', response.data);
+
+            // 닉네임을 localStorage에 저장
+            localStorage.setItem('nickname', formData.nickname);
+
+            // 회원가입이 완료되면 로그인 페이지로 이동
+            navigate('/login');
+        } catch (error) {
+            console.error('회원 가입 실패:', error);
+        }
+    };
+
+    const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
             ...formData,
@@ -34,52 +93,17 @@ const Signup = () => {
         });
 
         if (name === 'password' || name === 'confirmPassword') {
-            setIsPasswordMatch(true);
+            setIsPasswordMatch(formData.password === value);
         } else if (name === 'id') {
             setIsIdDuplicate(false);
             setIdCheckDone(false);
-        } else if (name === 'nickname') {
-            setIsNicknameDuplicate(false);
-            setNicknameCheckDone(false);
         } else if (name === 'email') {
             setIsEmailDuplicate(false);
             setEmailCheckDone(false);
+        } else if (name === 'nickname') {
+            setIsNicknameDuplicate(false);
+            setNicknameCheckDone(false);
         }
-    }
-
-    const handleDuplicateCheck = (type) => {
-        const existingIds = ['Id1', 'Id2', 'Id3'];
-        const existingNicknames = ['Nickname1', 'Nickname2', 'Nickname3'];
-        const existingEmails = ['Email1@example.com', 'Email2@example.com', 'Email3@example.com'];
-
-        if (type === 'id') {
-            const isDuplicate = existingIds.includes(formData.id);
-            // 아이디 중복 여부를 나타내는 상태에 저장
-            setIsIdDuplicate(isDuplicate);
-            //중복 확인 완료
-            setIdCheckDone(true);
-        } else if (type === 'nickname') {
-            const isDuplicate = existingNicknames.includes(formData.nickname);
-            setIsNicknameDuplicate(isDuplicate);
-            setNicknameCheckDone(true);
-        } else if (type === 'email') {
-            const isDuplicate = existingEmails.includes(formData.email);
-            setIsEmailDuplicate(isDuplicate);
-            setEmailCheckDone(true);
-        }
-    };
-
-    const handlePasswordMatch = () => {
-        setIsPasswordMatch(formData.password === formData.confirmPassword);
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (formData.password !== formData.confirmPassword) {
-            setIsPasswordMatch(false);
-            return;
-        }
-        console.log('회원 가입 정보:', formData);
     };
 
     return (
@@ -89,7 +113,7 @@ const Signup = () => {
                     <Link to="/login">
                         <img src={backIcon} alt="Back Icon" className="back-icon"/>
                     </Link>
-                    서비스명
+                    clothely
                 </div>
             </div>
             <div className='centerXWrapper'>
@@ -109,14 +133,9 @@ const Signup = () => {
                                     중복 확인
                                 </div>
                             )}
-                            {idCheckDone && isIdDuplicate && (
-                                <div className='duplicate-id afterCheck'>
-                                    NO
-                                </div>
-                            )}
-                            {idCheckDone && !isIdDuplicate && (
-                                <div className='available-id afterCheck'>
-                                    OK
+                            {idCheckDone && (
+                                <div className={`afterCheck ${isIdDuplicate ? 'duplicate-id' : 'available-id'}`}>
+                                    {isIdDuplicate ? 'NO' : 'OK'}
                                 </div>
                             )}
                         </div>
@@ -145,10 +164,6 @@ const Signup = () => {
                                 </div>
                             )}
                         </div>
-                        <div>
-                            <input type="text" name="name" value={formData.name} onChange={handleChange}
-                                   placeholder='이름'/>
-                        </div>
                         <div className='duplicateWrapper'>
                             <input
                                 className='duplicateInput'
@@ -163,14 +178,9 @@ const Signup = () => {
                                     중복 확인
                                 </div>
                             )}
-                            {nicknameCheckDone && isNicknameDuplicate && (
-                                <div className='duplicate-nickname afterCheck'>
-                                    NO
-                                </div>
-                            )}
-                            {nicknameCheckDone && !isNicknameDuplicate && (
-                                <div className='available-nickname afterCheck'>
-                                    OK
+                            {nicknameCheckDone && (
+                                <div className={`afterCheck ${isNicknameDuplicate ? 'duplicate-nickname' : 'available-nickname'}`}>
+                                    {isNicknameDuplicate ? 'NO' : 'OK'}
                                 </div>
                             )}
                         </div>
@@ -188,14 +198,9 @@ const Signup = () => {
                                     중복 확인
                                 </div>
                             )}
-                            {emailCheckDone && isEmailDuplicate && (
-                                <div className='duplicate-email afterCheck'>
-                                    NO
-                                </div>
-                            )}
-                            {emailCheckDone && !isEmailDuplicate && (
-                                <div className='available-email afterCheck'>
-                                    OK
+                            {emailCheckDone && (
+                                <div className={`afterCheck ${isEmailDuplicate ? 'duplicate-email' : 'available-email'}`}>
+                                    {isEmailDuplicate ? 'NO' : 'OK'}
                                 </div>
                             )}
                         </div>
@@ -206,8 +211,12 @@ const Signup = () => {
             <div className='centerXWrapper'>
                 <div className='move'>
                     <img src={product} alt="product" className="product-icon"/>
-                    <img src={digging} alt="digging" className="digging-icon"/>
-                    <img src={home} alt="home" className="home-icon"/>
+                    <Link to="/digging">
+                        <img src={digging} alt="digging" className="digging-icon" />
+                    </Link>
+                    <Link to="/home">
+                        <img src={home} alt="home" className="home-icon" />
+                    </Link>
                     <img src={community} alt="community" className="community-icon"/>
                     <Link to="/mypage">
                         <img src={mypage} alt="mypage" className="mypage-icon"/>
@@ -215,7 +224,6 @@ const Signup = () => {
                 </div>
             </div>
         </div>
-
     );
 };
 

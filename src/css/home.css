@@ -1,0 +1,50 @@
+.product {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-x: auto;
+    width: 500px;
+    white-space: nowrap;
+}
+.clothes-info{
+    margin-top: 80px;
+}
+.clothes-box {
+    background-color: #EBEBEB;
+    padding: 10px;
+    margin: 6px;
+    text-align: center;
+    width: 250px;
+    height: 300px;
+    margin-top: 300px;
+    display: inline-block; 
+}
+
+.clothes-image {
+    margin-top: 30px;
+    width: 100px;
+    height: auto;
+}
+
+.see-more {
+    justify-content:flex-end;
+    align-items: flex-end;
+    margin-top: 300px;
+    width: 250px;
+    height: 320px; 
+    background-color: #EBEBEB;
+    margin-left: 5px;
+    text-align: center;
+}
+
+.Good-image{
+    max-width: 30px;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.Good{
+    margin-top: -100px;
+    margin-left: 150px;
+}
